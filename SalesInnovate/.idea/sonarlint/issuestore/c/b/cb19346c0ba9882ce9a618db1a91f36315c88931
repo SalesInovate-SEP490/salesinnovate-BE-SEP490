@@ -1,0 +1,14 @@
+
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†Æ÷‰ùÿÿÿÿ8×ÐÀµ€2J$3da05477-6693-4801-874c-614b5adebbae
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(ò¤•Éøÿÿÿÿ8°Áµ€2J$84e35803-2fbe-4d70-807a-00e43b85d15d
+ƒ	java:S125'"<This block of commented-out lines of code should be removed.(ÍÍ¿ôþÿÿÿÿ8¯èÁµ€2J$bd548620-e9fc-454a-8bfd-8fb901f5c505
+h
+java:S1128"KRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.Converter'.(†Ì•8ãÏþµ€2
+m
+java:S1128"PRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.LogCallLeadDTO'.(«ú¹á8ãÏþµ€2
+o
+java:S1128"RRemove this unused import 'fpt.capstone.SalesInnovate.iLead.model.Log_Call_Leads'.(äÓÆ8ãÏþµ€2
+z
+java:S1128"^Remove this unused import 'fpt.capstone.SalesInnovate.iLead.repository.LogCallLeadRepository'.(€ÈìO8äÏþµ€2
+e
+java:S1128"HRemove this unused import 'jakarta.persistence.EntityNotFoundException'.(†œþè8äÏþµ€2

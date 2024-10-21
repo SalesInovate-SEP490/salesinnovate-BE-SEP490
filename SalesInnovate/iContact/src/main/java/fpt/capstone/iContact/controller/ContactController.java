@@ -1,0 +1,139 @@
+package fpt.capstone.iContact.controller;
+
+import fpt.capstone.iContact.dto.request.ContactDTO;
+import fpt.capstone.iContact.dto.response.ResponseData;
+import fpt.capstone.iContact.dto.response.ResponseError;
+import fpt.capstone.iContact.service.ContactService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+
+@Slf4j
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/contact")
+public class ContactController {
+
+    private final ContactService contactService ;
+
+    @PostMapping("/create-from-lead")
+    public ResponseData<Long> createFromLead( @RequestParam(required = false) long salution,@RequestParam(required = false) String firstName,
+                                              @RequestParam(required = false) String middleName,@RequestParam String lastName,
+                            @RequestParam long leadId ,@RequestParam long accountId) {
+        try {
+            long contactId = contactService.createFromLead(leadId,accountId,salution,firstName,middleName, lastName);
+            return new ResponseData<>(1,HttpStatus.CREATED.value(), contactId);
+        } catch (Exception e) {
+            log.error("errorMessage={}", e.getMessage(), e.getCause());
+            return new ResponseError(0,HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+    }
+
+    @PostMapping("/existing-from-lead")
+    public ResponseData<Long> existingFromLead( @RequestParam long contactId ,@RequestParam long accountId) {
+        try {
+            long existingContactId = contactService.existingFromLead(contactId,accountId);
+            return new ResponseData<>(1,HttpStatus.CREATED.value(), existingContactId);
+        } catch (Exception e) {
+            log.error("errorMessage={}", e.getMessage(), e.getCause());
+            return new ResponseError(0,HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+    }
+
+    @GetMapping("/list-contact")
+    public ResponseData<?> getListContact(@RequestParam(defaultValue = "0", required = false) int pageNo,
+                                          @RequestParam(defaultValue = "20", required = false) int pageSize){
+        try {
+            return new ResponseData<>(1, HttpStatus.OK.value(), contactService.getAllContactsWithSortByDefault(pageNo, pageSize));
+        } catch (Exception e) {
+
+            return new ResponseError(0, HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+    }
+
+    @GetMapping("/list-contact-by-account")
+    public ResponseData<?> getListContactByAccount(@RequestParam(defaultValue = "0", required = false) int pageNo,
+                                          @RequestParam(defaultValue = "20", required = false) int pageSize,
+                                                   @RequestParam long id){
+        try {
+            return new ResponseData<>(1, HttpStatus.OK.value(), contactService.getAllContactByAccount(pageNo, pageSize,id));
+        } catch (Exception e) {
+
+            return new ResponseError(0, HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+    }
+
+    @GetMapping("/contact-detail")
+    public ResponseData<?> getContactDetail(@RequestParam long id){
+        try {
+            return new ResponseData<>(1, HttpStatus.OK.value(), contactService.getContactDetail(id));
+        } catch (Exception e) {
+
+            return new ResponseError(0, HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/delete-contact")
+    public ResponseData<?> deleteContact(@RequestParam long id){
+        return contactService.deleteContact(id)?
+             new ResponseData<>( HttpStatus.OK.value(),"Delete success",1 ):
+             new ResponseError(0, HttpStatus.BAD_REQUEST.value(), "Delete fail");
+    }
+
+    @PostMapping("/create-contact")
+    public ResponseData<?> createContact(@RequestBody ContactDTO contactDTO){
+        try {
+            Long contactId = contactService.createContact(contactDTO);
+            return new ResponseData<>( HttpStatus.OK.value(),"Create contact success",
+                    contactService.getContactDetail(contactId),1);
+        }catch (Exception e){
+            return new ResponseError(0, HttpStatus.BAD_REQUEST.value(), "Delete fail");
+        }
+    }
+
+    @GetMapping("/filter-contact")
+    public ResponseData<?> filterLeadsWithSpecifications(Pageable pageable,
+                                                         @RequestParam(required = false) String[] search) {
+        try {
+            return new ResponseData<>(1, HttpStatus.OK.value(),
+                    contactService.filterContact(pageable, search));
+        } catch (Exception e) {
+            return new ResponseError(0, HttpStatus.BAD_REQUEST.value(), "list source fail");
+        }
+    }
+
+    @PatchMapping("/patch-contact")
+    public ResponseData<?> patchContact(@RequestBody ContactDTO contactDTO,@RequestParam long id){
+        return contactService.patchContact(contactDTO,id)?
+                new ResponseData<>( HttpStatus.OK.value(),"Patch contact success",1):
+                new ResponseError(0, HttpStatus.BAD_REQUEST.value(), "Patch contact fail");
+    }
+    @GetMapping("/export-file")
+    public ResponseEntity<Resource> getFileExport() throws IOException {
+        String filename = "contacts.xlsx";
+        ByteArrayInputStream fileExport = contactService.getExportFileData();
+        InputStreamResource file = new InputStreamResource(fileExport);
+
+        ResponseEntity<Resource> response = ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+                .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+                .body(file);
+
+        // Debugging headers
+        HttpHeaders headers = response.getHeaders();
+        System.out.println("Content-Disposition: " + headers.get(HttpHeaders.CONTENT_DISPOSITION));
+        System.out.println("Content-Type: " + headers.get(HttpHeaders.CONTENT_TYPE));
+
+        return response;
+    }
+}

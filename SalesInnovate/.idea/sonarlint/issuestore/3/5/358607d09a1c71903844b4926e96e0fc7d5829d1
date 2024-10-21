@@ -1,0 +1,14 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(©Ã­´øÿÿÿÿJ$5f78f852-3fbd-4142-a72a-cedae61e3f9a
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(ø½å¥ùÿÿÿÿ8ªªÃµ€2J$cce7097c-5f92-46b4-8e13-15c050531ea4
+f
+java:S1128"IRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.LeadDTO'.(þò€û8öÐþµ€2
+m
+java:S1128"PRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.LogCallLeadDTO'.(«ú¹á8÷Ðþµ€2
+t
+java:S1128"WRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.response.ResponseData'.(Šèª¤8÷Ðþµ€2
+z
+java:S1128"XRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.response.ResponseError'.(ê‹»‘þÿÿÿÿ8÷Ðþµ€2
+b
+java:S1128
+"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ8÷Ðþµ€2

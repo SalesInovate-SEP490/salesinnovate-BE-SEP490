@@ -1,0 +1,20 @@
+
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(©Ã­´øÿÿÿÿJ$7db20ea2-b30d-42b8-a7ea-aa3894046b13
+w	java:S125"<This block of commented-out lines of code should be removed.(ù•¬®J$bd8a3355-6325-4ca1-8488-74a61551540d
+g
+java:S1452"&Remove usage of generic wildcard type.(¿¨›ûÿÿÿÿJ$5d858ff4-dced-4654-a2b0-b2109e4e2a0e
+g
+java:S1452$"&Remove usage of generic wildcard type.(¥‘ÅóýÿÿÿÿJ$460f852c-abd1-4da1-94db-6ce9c37e1f17
+b
+java:S1452/"&Remove usage of generic wildcard type.(¼òü”J$f7420bbc-8f61-4df7-8cd7-865aae71f65a
+]	java:S1259"<This block of commented-out lines of code should be removed.(›÷Î«ûÿÿÿÿ8Î¡ý´€2
+`
+java:S1452V"&Remove usage of generic wildcard type.(ê™vJ$f2706b93-c35e-4973-a9ff-8685771e63c4
+g
+java:S1452_"&Remove usage of generic wildcard type.(ŒÝñ¤øÿÿÿÿJ$60b12760-0d95-4a32-8da6-288fc5ba26c7
+b
+java:S1452h"&Remove usage of generic wildcard type.(àà°£J$339b27a4-97f5-4835-b343-d2dba6c5bca6
+f
+java:S1128"IRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.LeadDTO'.(þò€û8Ò¡ý´€2
+l
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±ÄøÿÿÿÿJ$a00a743f-4fad-4502-8878-47d011f96512

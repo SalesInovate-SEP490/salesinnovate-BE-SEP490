@@ -1,0 +1,12 @@
+
+ï	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Å∫≈©J$b52fe2d6-5f34-4fca-86b7-a0fd4ed4bdee
+É	java:S125"<This block of commented-out lines of code should be removed.(≈’∏É˙ˇˇˇˇ8ªê¸¥Ä2J$b73412d3-7d69-47f1-8f94-89939ceeea8d
+g
+java:S1452"&Remove usage of generic wildcard type.(ôä Õ˘ˇˇˇˇJ$4d4b8cd8-b0c1-40a8-a8f8-8e629f9d847d
+å
+java:S1128"IRemove this unused import 'fpt.capstone.SalesInnovate.iLead.dto.LeadDTO'.(˛ÚÄ˚8ºê¸¥Ä2J$80bfcf4d-d677-42ae-bb81-c37758d588b6
+ä
+java:S1128
+"NRemove this unused import 'fpt.capstone.SalesInnovate.iLead.model.LeadStatus'.(çÕéÍJ$3111b43f-907b-46b1-a00e-614e3be2fe1c
+ã
+java:S1128"IRemove this unused import 'fpt.capstone.SalesInnovate.iLead.model.Leads'.(†ÇÓY8ºê¸¥Ä2J$79ce12c7-5d77-4f8f-b440-106ab178af58
